@@ -77,6 +77,41 @@ Options:
 | allowUserDomains | `false`           | Allows Node domains to be loaded from user extensions.
 
 
+Development & Testing
+------------
+1. From the project root, run `git submodule update --init`.
+2. `cd brackets-src`
+3. `npm install` from within brackets-src dir
+4. `grunt` from within brackets-src dir again. <br> 
+    Rerun everytime you do any work or update brackets source code.
+5. `cd ../` back out to project root
+6. `npm install`
+7. `grunt build`<br> 
+    Rerun everytime you do any work or update brackets source code.
+8. `grunt publish:simulate` to reinstall as `brackets` npm module.
+9. Run command above `brackets --port 80 --proj-dir /var/projects --supp-dir /var/brackets` to start the brackets server
+10. Go to http://localhost:80/ in your browser (or on whichever port specified in previous command)
+
+Grunt Tasks
+------------
+All command run from root of project, `grunt <task>`
+
+| Task             | Description
+|------------------|------------------------------------------------------------
+| build            | Main task which outputs brackets server dist.
+| docs             | Generate jsDoc from code.
+| publish:simulate | Install npm package globally as `brackets`.
+| build-config     | Generate a new configuration file shown in Help->About menu.
+
+
+Updating Brackets: (Often does not work without fixes)
+------------
+1. `cd brackets-src`
+2. `git pull origin <brackets sha5 for desired release>` <br>
+    for example: `git pull origin cf9cf46984290a7bdcd21e6b222c1040042d4d79`
+3. `git submodule update --init`
+4. From project root, regenerate config: `grunt build-config`
+
 Contributing
 ------------
 
